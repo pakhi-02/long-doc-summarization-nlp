@@ -20,3 +20,14 @@ Transformer-based summarization models struggle with long documents due to conte
 - spaCy / NLTK
 - ROUGE, BERTScore
 - Streamlit (for demo)
+
+## Evaluation Metrics
+- ROUGE-1 / ROUGE-L
+- BERTScore
+- Manual faithfulness analysis to detect hallucinations
+
+## Future Improvements
+- Citation-aware summarization
+- Extractive + abstractive hybrid models
+- Domain-specific fine-tuning
+- Long-context LLM integration
