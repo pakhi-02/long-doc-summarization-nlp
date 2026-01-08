@@ -1,0 +1,22 @@
+{
+  "doc_id": "2110.14168v2",
+  "metadata": {
+    "filename": "2110.14168v2.pdf",
+    "arxiv_id": "2110.14168",
+    "title": "Training Veri\fers to Solve Math Word Problems",
+    "abstract": "State-of-the-art language models can match human performance on\nmany tasks, but they still struggle to robustly perform multi-step mathe-\nmatical reasoning. To diagnose the failures of current models and support\nresearch, we introduce GSM8K, a dataset of 8.5K high quality linguisti-\ncally diverse grade school math word problems. We \fnd that even the\nlargest transformer models fail to achieve high test performance, despite\nthe conceptual simplicity of this problem distribution. To increase per-\nformance, we propose training veri\fers to judge the correctness of model\ncompletions. At test time, we generate many candidate solutions and\nselect the one ranked highest by the veri\fer. We demonstrate that ver-\ni\fcation signi\fcantly improves performance on GSM8K, and we provide\nstrong empirical evidence that veri\fcation scales more e\u000bectively with\nincreased data than a \fnetuning baseline.",
+    "processed_date": "2026-01-08T10:01:41.151137",
+    "word_count": 7503,
+    "char_count": 45296
+  },
+  "original_length": 7503,
+  "summary_length": 69,
+  "num_chunks": 9,
+  "compression_ratio": 0.009196321471411436,
+  "faithfulness_score": 0.9636363636363636,
+  "processing_time": 7.34142,
+  "summary": "GSM8K is a dataset of 8. 5K diverse grade school math word problems. We instructed problem writers to explain their work as much as possible, but we allowed them to write solutions in their own diverse linguistic styles. At test time, we can choose to generate arbitrarily many solutions to be judged by the model. We then performed another round of agreement checks on a smaller set of problems.",
+  "method": "hierarchical",
+  "model": "facebook/bart-large-cnn",
+  "timestamp": "2026-01-08T11:35:02.146446"
+}

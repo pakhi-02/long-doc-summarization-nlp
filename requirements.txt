@@ -8,3 +8,15 @@ rouge-score
 bert-score
 streamlit
 langchain
+matplotlib
+seaborn
+pandas
+numpy<2.0
+
+# Development dependencies
+pytest>=7.0.0
+black>=22.0.0
+flake8>=4.0.0
+ipython>=8.0.0
+jupyter>=1.0.0
+notebook>=6.4.0

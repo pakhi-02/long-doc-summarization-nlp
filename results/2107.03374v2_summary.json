@@ -1,0 +1,22 @@
+{
+  "doc_id": "2107.03374v2",
+  "metadata": {
+    "filename": "2107.03374v2.pdf",
+    "arxiv_id": "2107.03374",
+    "title": "Evaluating Large Language Models Trained on Code",
+    "abstract": "Abstract not found",
+    "processed_date": "2026-01-08T10:01:40.967102",
+    "word_count": 24154,
+    "char_count": 154117
+  },
+  "original_length": 24154,
+  "summary_length": 118,
+  "num_chunks": 29,
+  "compression_ratio": 0.004885319201788523,
+  "faithfulness_score": 1.0,
+  "processing_time": 3.554594,
+  "summary": "Evaluating Large Language Models Trained on Code\nMark Chen* 1Jerry Tworek* 1Heewoo Jun* 1Qiming Yuan* 1Henrique Ponde de Oliveira Pinto* 1\nJared Kaplan* 2Harri Edwards1Yuri Burda1Nicholas Joseph2Greg Brockman1Alex Ray1Raul Puri1\nGretchen Krueger1Michael Petrov1Heidy Khlaaf3Girish Sastry1Pamela Mishkin1Brooke Chan1\nScott Gray1Nick Ryder1Mikhail Pavlov1Alethea Power1Lukasz Kaiser1Mohammad Bavarian1\nClemens Winter1Philippe Tillet1Felipe Petroski Such1Dave Cummings1Matthias Plappert1\nFotios Chantzis1Elizabeth Barnes1Ariel Herbert-Voss1William Hebgen Guss1Alex Nichol1Alex Paino1\nNikolas Tezak1Jie Tang1Igor Babuschkin1Suchir Balaji1Shantanu Jain1William Saunders1\nChristopher Hesse1Andrew N.   Carr1Jan Leike1Josh Achiam1Vedant Misra1Evan Morikawa1\nAlec Radford1Matthew Knight1Miles Brundage1Mira Murati1Katie Mayer1Peter Welinder1\nBob McGrew1Dario Amodei2Sam McCandlish2Ilya Sutskever1Wojciech Zaremba1\nAbstract\nWe introduce Codex, a GPT language model \ufb01ne-\ntuned on publicly available code from GitHub,\nand study its Python code-writing capabilities.   A distinct production version of Codex powers\nGitHub Copilot.",
+  "method": "hierarchical",
+  "model": "facebook/bart-large-cnn",
+  "timestamp": "2026-01-08T11:34:54.802896"
+}

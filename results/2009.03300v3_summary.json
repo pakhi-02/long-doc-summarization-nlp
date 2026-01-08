@@ -1,0 +1,22 @@
+{
+  "doc_id": "2009.03300v3",
+  "metadata": {
+    "filename": "2009.03300v3.pdf",
+    "arxiv_id": "2009.03300",
+    "title": "Published as a conference paper at ICLR 2021",
+    "abstract": "Abstract not found",
+    "processed_date": "2026-01-08T10:01:40.613144",
+    "word_count": 12776,
+    "char_count": 83025
+  },
+  "original_length": 12776,
+  "summary_length": 79,
+  "num_chunks": 15,
+  "compression_ratio": 0.006183469004383218,
+  "faithfulness_score": 1.0,
+  "processing_time": 0.063427,
+  "summary": "Published as a conference paper at ICLR 2021\nMEASURING MASSIVE MULTITASK\nLANGUAGE UNDERSTANDING\nDan Hendrycks\nUC BerkeleyCollin Burns\nColumbia UniversitySteven Basart\nUChicagoAndy Zou\nUC Berkeley\nMantas Mazeika\nUIUCDawn Song\nUC BerkeleyJacob Steinhardt\nUC Berkeley\nABSTRACT\nWe propose a new test to measure a text model\u2019s multitask accuracy.   The test\ncovers 57 tasks including elementary mathematics, US history, computer science,\nlaw, and more.   To attain high accuracy on this test, models must possess extensive\nworld knowledge and problem solving ability.",
+  "method": "hierarchical",
+  "model": "facebook/bart-large-cnn",
+  "timestamp": "2026-01-08T11:34:45.152397"
+}

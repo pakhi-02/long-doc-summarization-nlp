@@ -1,0 +1,22 @@
+{
+  "doc_id": "2305.15717v1",
+  "metadata": {
+    "filename": "2305.15717v1.pdf",
+    "arxiv_id": "2305.15717",
+    "title": "The False Promise of Imitating Proprietary LLMs",
+    "abstract": "An emerging method to cheaply improve a weaker language model is to finetune\nit on outputs from a stronger model, such as a proprietary system like ChatGPT\n(e.g., Alpaca, Self-Instruct, and others). This approach looks to cheaply imitate the\nproprietary model\u2019s capabilities using a weaker open-source model. In this work,\nwe critically analyze this approach. We first finetune a series of LMs that imitate\nChatGPT using varying base model sizes (1.5B\u201313B), data sources, and imitation\ndata amounts (0.3M\u2013150M tokens). We then evaluate the models using crowd\nraters and canonical NLP benchmarks. Initially, we were surprised by the output\nquality of our imitation models\u2014they appear far better at following instructions,\nand crowd workers rate their outputs as competitive with ChatGPT. However, when\nconducting more targeted automatic evaluations, we find that imitation models\nclose little to none of the gap from the base LM to ChatGPT on tasks that are\nnot heavily supported in the imitation data",
+    "processed_date": "2026-01-08T10:01:41.295211",
+    "word_count": 8092,
+    "char_count": 52740
+  },
+  "original_length": 8092,
+  "summary_length": 43,
+  "num_chunks": 10,
+  "compression_ratio": 0.005313890261987148,
+  "faithfulness_score": 1.0,
+  "processing_time": 6.204218,
+  "summary": "Imitation models close little to none of the large gap between LLaMA and ChatGPT. Models do not improve (or even decline in accuracy) on evaluation datasets for which there is little support. Academics can use powerful imitation LMs to drive new research projects.",
+  "method": "hierarchical",
+  "model": "facebook/bart-large-cnn",
+  "timestamp": "2026-01-08T11:35:08.352723"
+}

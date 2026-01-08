@@ -1,0 +1,22 @@
+{
+  "doc_id": "1512.03385v1",
+  "metadata": {
+    "filename": "1512.03385v1.pdf",
+    "arxiv_id": "1512.03385",
+    "title": "Deep Residual Learning for Image Recognition",
+    "abstract": "Abstract not found",
+    "processed_date": "2026-01-08T10:01:40.206980",
+    "word_count": 9676,
+    "char_count": 59274
+  },
+  "original_length": 9676,
+  "summary_length": 45,
+  "num_chunks": 11,
+  "compression_ratio": 0.0046506821000413395,
+  "faithfulness_score": 0.9743589743589743,
+  "processing_time": 6.446156,
+  "summary": "Deeper neural networks are more dif\ufb01cult to train. We present a residual learning framework to ease the training process. Our deep residual nets can easily enjoy accuracy gains from greatly increased depth. We conjecture that the deep plain nets may have exponentially low convergence rates.",
+  "method": "hierarchical",
+  "model": "facebook/bart-large-cnn",
+  "timestamp": "2026-01-08T11:34:45.085491"
+}

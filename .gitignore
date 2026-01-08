@@ -1,0 +1,13 @@
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Data
+data/raw/*.pdf
+data/processed/*.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo

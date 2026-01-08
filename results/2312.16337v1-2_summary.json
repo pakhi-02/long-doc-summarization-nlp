@@ -1,0 +1,22 @@
+{
+  "doc_id": "2312.16337v1-2",
+  "metadata": {
+    "filename": "2312.16337v1-2.pdf",
+    "arxiv_id": "2312.16337",
+    "title": "Task Contamination: Language Models May Not Be Few-Shot Anymore",
+    "abstract": "Largelanguagemodels(LLMs)offerimpressiveperformance\nin various zero-shot and few-shot tasks. However, their suc-\ncess in zero-shot and few-shot settings may be affected by\ntask contamination, a potential limitation that has not been\nthoroughly examined. This paper investigates how zero-shot\nand few-shot performance of LLMs has changed chronolog-\nically over time. Utilizing GPT-3 series models and several\nother recent open-sourced LLMs, and controlling for dataset\ndifficulty, we find that on datasets released before the LLM\ntraining data creation date, LLMs perform surprisingly bet-\nter than on datasets released after. This strongly indicates\nthat,formanyLLMs,thereexiststaskcontaminationonzero-\nshot and few-shot evaluation for datasets released prior to\nthe LLMs\u2019 training data creation date. Additionally, we uti-\nlize training data inspection, task example extraction, and a\nmembership inference attack, which reveal further evidence\nof task contamination. Importantly, we find that for cl",
+    "processed_date": "2026-01-08T10:01:45.822397",
+    "word_count": 9858,
+    "char_count": 78752
+  },
+  "original_length": 9858,
+  "summary_length": 22,
+  "num_chunks": 12,
+  "compression_ratio": 0.0022316899979711907,
+  "faithfulness_score": 0.8181818181818182,
+  "processing_time": 4.338602,
+  "summary": "Task Contamination: Language Models May Not Be Few-Shot Anymore\nChangmao Li, Jeffrey Flanigan\nUniversity of California, Santa Cruz\nchangmao.  li@ucsc.  edu, jmflanig@ucsc.",
+  "method": "hierarchical",
+  "model": "facebook/bart-large-cnn",
+  "timestamp": "2026-01-08T11:35:20.422918"
+}

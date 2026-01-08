@@ -1,0 +1,22 @@
+{
+  "doc_id": "2310.10628v1",
+  "metadata": {
+    "filename": "2310.10628v1.pdf",
+    "arxiv_id": "2310.10628",
+    "title": "Data Contamination Through the Lens of Time",
+    "abstract": "Recent claims about the impressive abilities of large language models (LLMs) are often\nsupported by evaluating publicly available benchmarks. Since LLMs train on wide swaths of the\ninternet, this practice raises concerns of data contamination, i.e., evaluating on examples that\nare explicitly or implicitly included in the training data. Data contamination remains notoriously\nchallenging to measure and mitigate, even with partial attempts like controlled experimentation\nof training data, canary strings, or embedding similarities. In this work, we conduct the first\nthorough longitudinal analysis of data contamination in LLMs by using the natural experiment\nof training cutoffs in GPT models to look at benchmarks released over time. Specifically, we\nconsider two code/mathematical problem-solving datasets, Codeforces and Project Euler, and\nfind statistically significant trends among LLM pass rate vs. GitHub popularity and release date\nthat provide strong evidence of contamination. By open-so",
+    "processed_date": "2026-01-08T10:01:45.560742",
+    "word_count": 11115,
+    "char_count": 76079
+  },
+  "original_length": 11115,
+  "summary_length": 58,
+  "num_chunks": 14,
+  "compression_ratio": 0.0052181736392262704,
+  "faithfulness_score": 0.9411764705882353,
+  "processing_time": 3.688053,
+  "summary": "Data Contamination Through the Lens of Time\nManley Roberts\u22171, Himanshu Thakur1, Christine Herlihy2, Colin White1,3, Samuel Dooley1\n1Abacus.  AI,2University of Maryland,3Caltech\nAbstract\nRecent claims about the impressive abilities of large language models (LLMs) are often\nsupported by evaluating publicly available benchmarks.   Since LLMs train on wide swaths of the\ninternet, this practice raises concerns of data contamination, i.",
+  "method": "hierarchical",
+  "model": "facebook/bart-large-cnn",
+  "timestamp": "2026-01-08T11:35:16.081714"
+}

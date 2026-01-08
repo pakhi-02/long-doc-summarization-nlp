@@ -1,0 +1,22 @@
+{
+  "doc_id": "2306.05685v4",
+  "metadata": {
+    "filename": "2306.05685v4.pdf",
+    "arxiv_id": "2306.05685",
+    "title": "Judging LLM-as-a-Judge",
+    "abstract": "Evaluating large language model (LLM) based chat assistants is challenging due to\ntheir broad capabilities and the inadequacy of existing benchmarks in measuring\nhuman preferences. To address this, we explore using strong LLMs as judges to\nevaluate these models on more open-ended questions. We examine the usage and\nlimitations of LLM-as-a-judge, including position, verbosity, and self-enhancement\nbiases, as well as limited reasoning ability, and propose solutions to mitigate some\nof them. We then verify the agreement between LLM judges and human preferences\nby introducing two benchmarks: MT-bench, a multi-turn question set; and Chatbot\nArena, a crowdsourced battle platform. Our results reveal that strong LLM judges\nlike GPT-4 can match both controlled and crowdsourced human preferences well,\nachieving over 80% agreement, the same level of agreement between humans.\nHence, LLM-as-a-judge is a scalable and explainable way to approximate human\npreferences, which are otherwise very expensiv",
+    "processed_date": "2026-01-08T10:01:41.530054",
+    "word_count": 13186,
+    "char_count": 86817
+  },
+  "original_length": 13186,
+  "summary_length": 57,
+  "num_chunks": 16,
+  "compression_ratio": 0.004322766570605188,
+  "faithfulness_score": 1.0,
+  "processing_time": 4.035079,
+  "summary": "Judging LLM-as-a-Judge\nwith MT-Bench and Chatbot Arena\nLianmin Zheng1\u2217Wei-Lin Chiang1\u2217Ying Sheng4\u2217Siyuan Zhuang1\nZhanghao Wu1Yonghao Zhuang3Zi Lin2Zhuohan Li1Dacheng Li13\nEric P.   Xing35Hao Zhang12Joseph E.   Gonzalez1Ion Stoica1\n1UC Berkeley2UC San Diego3Carnegie Mellon University4Stanford5MBZUAI\nAbstract\nEvaluating large language model (LLM) based chat assistants is challenging due to\ntheir broad capabilities and the inadequacy of existing benchmarks in measuring\nhuman preferences.",
+  "method": "hierarchical",
+  "model": "facebook/bart-large-cnn",
+  "timestamp": "2026-01-08T11:35:12.391026"
+}

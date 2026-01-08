@@ -1,0 +1,22 @@
+{
+  "doc_id": "2404.18824v1",
+  "metadata": {
+    "filename": "2404.18824v1.pdf",
+    "arxiv_id": "2404.18824",
+    "title": "GenerativeAIResearchBenchmarking Benchmark Leakage in Large Language",
+    "abstract": "Amid the expanding use of pre-training data, the phenomenon of bench-\nmark dataset leakage has become increasingly prominent, exacerbated by\nopaque training processes and the often undisclosed inclusion of super-\nvised data in contemporary Large Language Models (LLMs). This issue\nskews benchmark effectiveness and fosters potentially unfair comparisons,\nimpeding the field\u2019s healthy development. To address this, we introduce a\ndetection pipeline utilizing Perplexity and N-gram accuracy\u2014two simple\nand scalable metrics that gauge a model\u2019s prediction precision on bench-\nmark\u2014to identify potential data leakages. By analyzing 31 LLMs under the\ncontext of mathematical reasoning, we reveal substantial instances of train-\ning even test set misuse, resulting in potentially unfair comparisons. These\nfindings prompt us to offer several recommendations regarding model\ndocumentation, benchmark setup, and future evaluations. Notably, we\npropose the \u201c Benchmark Transparency Card \u201d (Tab. 19) to encoura",
+    "processed_date": "2026-01-08T10:01:46.450858",
+    "word_count": 17713,
+    "char_count": 122156
+  },
+  "original_length": 17713,
+  "summary_length": 29,
+  "num_chunks": 27,
+  "compression_ratio": 0.0016372156043583809,
+  "faithfulness_score": 0.896551724137931,
+  "processing_time": 14.034527,
+  "summary": "GenerativeAIResearchBenchmarking Benchmark Leakage in Large Language\nModels\nRuijie Xu1,3\u2217Zengzhi Wang1,3\u2217Run-Ze Fan1,3\u2217Pengfei Liu1,2,3 \u2020\n1Shanghai Jiao Tong University2Shanghai Artificial Intelligence Laboratory\n3Generative AI Research Lab (GAIR)\n{hsu.  rayjay,zzwang.  nlp }@gmail.",
+  "method": "hierarchical",
+  "model": "facebook/bart-large-cnn",
+  "timestamp": "2026-01-08T11:35:38.734392"
+}

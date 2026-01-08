@@ -1,0 +1,742 @@
+Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing , pages 4846–4853,
+November 16–20, 2020. c2020 Association for Computational Linguistics4846Utility is in the Eye of the User: A Critique of NLP Leaderboards
+Kawin Ethayarajh
+Stanford University
+kawin@stanford.eduDan Jurafsky
+Stanford University
+jurafsky@stanford.edu
+Abstract
+Benchmarks such as GLUE have helped drive
+advances in NLP by incentivizing the creation
+of more accurate models. While this leader-
+board paradigm has been remarkably success-
+ful, a historical focus on performance-based
+evaluation has been at the expense of other
+qualities that the NLP community values in
+models, such as compactness, fairness, and en-
+ergy efﬁciency. In this opinion paper, we study
+the divergence between what is incentivized
+by leaderboards and what is useful in prac-
+tice through the lens of microeconomic the-
+ory. We frame both the leaderboard and NLP
+practitioners as consumers and the beneﬁt they
+get from a model as its utility to them. With
+this framing, we formalize how leaderboards
+– in their current form – can be poor proxies
+for the NLP community at large. For exam-
+ple, a highly inefﬁcient model would provide
+less utility to practitioners but not to a leader-
+board, since it is a cost that only the former
+must bear. To allow practitioners to better es-
+timate a model’s utility to them, we advocate
+for more transparency on leaderboards, such
+as the reporting of statistics that are of practi-
+cal concern (e.g., model size, energy efﬁciency,
+and inference latency).
+1 Introduction
+The past few years have seen signiﬁcant progress
+on a variety of NLP tasks, from question answer-
+ing to machine translation. These advances have
+been driven in part by benchmarks such as GLUE
+(Wang et al., 2018), whose leaderboards rank mod-
+els by how well they perform on these diverse tasks.
+Performance-based evaluation on a shared task is
+not a recent idea either; this sort of shared chal-
+lenge has been an important driver of progress since
+MUC (Sundheim, 1995). While this paradigm has
+been successful at driving the creation of more ac-
+curate models, the historical focus on performance-
+based evaluation has been at the expense of otherattributes valued by the NLP community, such as
+fairness and energy efﬁciency (Bender and Fried-
+man, 2018; Strubell et al., 2019). For example, a
+highly inefﬁcient model would have limited use in
+practical applications, but this would not preclude
+it from reaching the top of most leaderboards. Sim-
+ilarly, models can reach the top while containing
+racial and gender biases – and indeed, some have
+(Bordia and Bowman, 2019; Manzini et al., 2019;
+Rudinger et al., 2018; Blodgett et al., 2020).
+Microeconomics provides a useful lens through
+which to study the divergence between what is in-
+centivized by leaderboards and what is valued by
+practitioners. We can frame both the leaderboard
+and NLP practitioners as consumers of models and
+the beneﬁt they receive from a model as its utility
+to them. Although leaderboards are inanimate, this
+framing allows us to make an apples-to-apples com-
+parison: if the priorities of leaderboards and practi-
+tioners are perfectly aligned, their utility functions
+should be identical; the less aligned they are, the
+greater the differences. For example, the utility of
+both groups is monotonic non-decreasing in accu-
+racy, so a more accurate model is no less preferable
+to a less accurate one, holding all else constant.
+However, while the utility of practitioners is also
+sensitive to the size and efﬁciency of a model, the
+utility of leaderboards is not. By studying such
+differences, we formalize some of the limitations
+in contemporary leaderboard design:
+1.Non-Smooth Utility : For a leaderboard, an
+improvement in model accuracy on a given
+task only increases utility when it also in-
+creases rank. For practitioners, any improve-
+ment in accuracy can increase utility.
+2.Prediction Cost : Leaderboards treat the cost
+of making predictions (e.g., model size, en-
+ergy efﬁciency, latency) as being zero, which
+does not hold in practice.
+48473.Robustness : Practitioners receive higher util-
+ity from a model that is more robust to adver-
+sarial perturbations, generalizes better to out-
+of-distribution data, and that is equally fair
+to all demographics. However, these beneﬁts
+would leave leaderboard utility unchanged.
+We contextualize these limitations with examples
+from the ML fairness (Barocas et al., 2017; Hardt
+et al., 2016), Green AI (Strubell et al., 2019;
+Schwartz et al., 2019), and robustness literature
+(Jia and Liang, 2017). These three limitations are
+not comprehensive – other problems can also arise,
+which we leave to be discussed in future work.
+What changes can we make to leaderboards so
+that their utility functions better reﬂect that of the
+NLP community at large? Given that each practi-
+tioner has their own preferences, there is no way to
+rank models so that everyone is satisﬁed. Instead,
+we suggest that leaderboards demand transparency,
+requiring the reporting of statistics that are of prac-
+tical concern (e.g., model size, energy efﬁciency).
+This is akin to the use of data statements for mit-
+igating bias in NLP systems (Gebru et al., 2018;
+Mitchell et al., 2019; Bender and Friedman, 2018).
+This way, practitioners can determine the utility
+they receive from a given model with relatively lit-
+tle effort. Dodge et al. (2019) have suggested that
+model creators take it upon themselves to report
+these statistics, but without leaderboards requiring
+it, there is little incentive to do so.
+2 Utility Functions
+In economics, the utility of a good denotes the bene-
+ﬁt that a consumer receives from it (Mankiw, 2020).
+We speciﬁcally discuss the theory of cardinal util-
+ity, in which the amount of the good consumed
+can be mapped to a numerical value that quantiﬁes
+its utility in utils (Mankiw, 2020). For example, a
+consumer might assign a value of 10 utils to two
+apples and 8 utils to one orange; we can infer both
+the direction and magnitude of the preference.
+Leaderboards We use the term leaderboard to
+refer to any ranking of models or systems using
+performance-based evaluation on a shared bench-
+mark. In NLP, this includes both longstanding
+benchmarks such as GLUE (Wang et al., 2018)
+and one-off challenges such as the annual SemEval
+STS tasks (Agirre et al., 2013, 2014, 2015). This
+is not a recent idea either; this paradigm has been
+a driver of progress since MUC (Sundheim, 1995).All we assume is that all models are evaluated on
+the same held-out test data.
+In our framework, leaderboards are consumers
+whose utility is solely derived from the rank of a
+model. Framing leaderboards as consumers is un-
+orthodox, given that they are inanimate – in fact, it
+might seem more intuitive to say that leaderboards
+are another kind of product that is also consumed
+by practitioners. While that perspective is valid,
+what we ultimately care about is how good of a
+proxy leaderboards are for practitioner preferences.
+Framing both leaderboards and practitioners as con-
+sumers permits an apples-to-apples comparison us-
+ing their utility functions. If a leaderboard were
+only thought of as a product, it would not have such
+a function, precluding such a comparison.
+Unlike most kinds of consumers, a leaderboard
+is a consumer whose preferences are perfectly re-
+vealed through its rankings: the state-of-the-art
+(SOTA) model is preferred to all others, the second
+ranking model is preferred to all those below it,
+and so on. Put more formally, leaderboard utility is
+monotonic non-decreasing in rank. Still, because
+each consumer is unique, we cannot know the exact
+shape of a leaderboard utility function – only that
+it possesses this monotonicity.
+NLP Practitioners Practitioners are also con-
+sumers, but they derive utility from multiple prop-
+erties of the model being consumed (e.g., accuracy,
+energy efﬁciency, latency). Each input into their
+utility function is some desideratum, but since each
+practitioner applies the model differently, the func-
+tions can be different. For example, someone may
+assign higher utility to BERT-Large (Devlin et al.,
+2019) and its 95% accuracy on some task, while
+another may assign higher utility to the smaller
+BERT-Base and its 90% accuracy. As with leader-
+boards, although the exact shapes of practitioner
+utility functions are unknown, we can infer that
+they are monotonic non-decreasing in each desider-
+atum. For example, more compact models are more
+desirable, so increasing compactness while holding
+all else constant will never decrease utility.
+3 Utilitarian Critiques
+Our criticisms apply regardless of the shape taken
+by practitioner utility functions – a necessity, given
+that the exact shapes are unknown. However, not
+every criticism applies to every leaderboard. Stere-
+oSet (Nadeem et al., 2020) is a leaderboard that
+ranks language models by how unbiased they are,
+4848
+Figure 1: A contrast of possible utility functions for
+leaderboards and NLP practitioners. Note that for
+leaderboards, utility is not smooth with respect to ac-
+curacy; there is only an increase if the model is SOTA
+/ #2 / #3 on the leaderboard. For practitioners, utility
+is smooth – any improvement in accuracy yields more
+utility. The utility functions can take on a variety of
+shapes but are always monotonic non-decreasing.
+so fairness-related criticisms would not apply as
+much to StereoSet. Similarly, the SNLI leader-
+board (Bowman et al., 2015) reports the model size
+– a cost of making predictions – even if it does
+not factor this cost into the model ranking. Still,
+most of our criticisms apply to most leaderboards
+in NLP, and we provide examples of well-known
+leaderboards that embody each limitation.
+3.1 Non-Smoothness of Utility
+Leaderboards only gain utility from an increase in
+accuracy when it improves the model’s rank. This
+is because, by deﬁnition, the leaderboard’s prefer-
+ences are perfectly revealed through its ranking –
+there is no model that can be preferred to another
+while having a lower rank. Since an increase in
+accuracy does not necessarily trigger an increase
+in rank, it does not necessarily trigger an increase
+in leaderboard utility either.
+Put another way, the utility of leaderboards takes
+the form of a step function, meaning that it is not
+smooth with respect to accuracy. In contrast, the
+utility of practitioners is smooth with respect to
+accuracy. Holding all else constant, an increase in
+accuracy will yield some increase in utility, how-
+ever small. Why this difference? The utility of
+leaderboards is a function of rank – it is only in-
+directly related to accuracy. On the other hand,
+the utility of practitioners is a direct function of
+accuracy, among other desiderata. To illustrate this
+difference, we contrast possible practitioner andleaderboard utility functions in Figure 1.
+This difference means that practitioners who are
+content with a less-than-SOTA model – as long
+as it is lightweight, perhaps – are under-served,
+while practitioners who want competitive-with-
+SOTA models are over-served. For example, on
+a given task, say that an n-gram baseline obtains
+an accuracy of 78%, an LSTM baseline obtains
+81%, and a BERT-based SOTA obtains 92%. The
+leaderboard does not incentivize the creation of
+lightweight models that are 85% accurate, and
+as a result, few such models will be created. This is
+indeed the case with the SNLI leaderboard (Bow-
+man et al., 2015), where most submitted models
+are highly-parameterized and over 85% accurate.
+This incentive structure leaves those looking for
+a lightweight model with limited options. This
+lack of smaller, more energy-efﬁcient models has
+been an impediment to the adoption of Green AI
+(Schwartz et al., 2019; Strubell et al., 2019). Al-
+though there are increasingly more lightweight and
+faster-to-train models – such as ELECTRA, on
+which accuracy and training time can be easily
+traded off (Clark et al., 2020) – their creation was
+not incentivized by a leaderboard, despite there
+being a demand for such models in the NLP com-
+munity. A similar problem exists with incentivizing
+the creation of fair models, though the introduction
+of leaderboards such as StereoSet (Nadeem et al.,
+2020) are helping bridge this divide.
+3.2 Prediction Cost
+Leaderboards of NLP benchmarks rank models by
+taking the average accuracy, F1 score, or exact
+match rate (Wang et al., 2018, 2019; McCann et al.,
+2018). In other words, they rank models purely by
+the value of their predictions; no consideration is
+given to the cost of making those predictions. We
+deﬁne ‘cost’ here chieﬂy as model size, energy-
+efﬁciency, training time, and inference latency –
+essentially any sacriﬁce that needs to be made in
+order to use the model. In reality, no model is
+costless, yet leaderboards are cost-ignorant.
+This means that a SOTA model can simultane-
+ously provide high utility to a leaderboard and
+zero utility to a practitioner, by virtue of being
+too impractical to use. For some time, this was true
+of the 175 billion parameter GPT-3 (Brown et al.,
+2020), which achieved SOTA on several few-shot
+tasks, but whose sheer size precludes it from be-
+ing fully reproduced by researchers. Even today,
+4849practitioners can only use GPT-3 through an API,
+access to which is restricted. The cost-ignorance
+of leaderboards disproportionately affects practi-
+tioners with fewer resources (e.g., independent re-
+searchers) (Rogers, 2019), since the resource de-
+mands would dwarf any utility from the model.
+It should be noted that this limitation of leader-
+boards has not precluded the creation of cheaper
+models, given the real-world beneﬁt of lower costs.
+For example, ELECTRA (Clark et al., 2020) can
+be trained up to several hundred times faster than
+traditional BERT-based models while performing
+comparably on GLUE. Similarly, DistilBERT is a
+distilled variant of BERT that is 40% smaller and
+60% faster while retaining 97% of the language
+understanding (Sanh et al., 2019). There are many
+others like it as well (Zadeh and Moshovos, 2020;
+Hou et al., 2020; Mao et al., 2020). More efﬁciency
+and fewer parameters translate to lower costs.
+Our point is not that there is no incentive at all
+to build cheaper models, but rather that this incen-
+tive is not baked into leaderboards, which are an
+important artefact of the NLP community. Because
+lower prediction costs improve practitioner utility,
+practitioners build them despite the lack of incen-
+tive from leaderboards. If lower prediction costs
+also improved leaderboard utility, then there would
+be more interest in creating them (Linzen, 2020;
+Rogers, 2019; Dodge et al., 2019). At the very least,
+making prediction costs publicly available would
+allow users to better estimate the utility that they
+will get from a model, given that the leaderboard’s
+cost-ignorant ranking may be a poor proxy for their
+preferences.
+3.3 Robustness
+Leaderboard utility only depends on model rank,
+which in turn only depends on the model’s per-
+formance on the test data. A typical leaderboard
+would gain no additional utility from a model that
+was robust to adversarial examples, generalized
+well to out-of-distribution data (Linzen, 2020), or
+was fair in a Rawlsian sense (i.e., by maximizing
+the welfare of the worst-off group) (Rawls, 2001;
+Hashimoto et al., 2018). In contrast, these are all
+attributes that NLP practitioners care about, par-
+ticularly those who deploy systems in real-world
+applications. In fact, the literature on the lack of
+robustness in many SOTA models is extensive (Jia
+and Liang, 2017; Zhang et al., 2020).
+There are many examples of state-of-the-art NLPmodels that were found to be brittle or biased. The
+question-answering dataset SQuAD 2.0 was cre-
+ated in response to the observation that existing sys-
+tems could not reliably demur when presented with
+an unanswerable question (Rajpurkar et al., 2016,
+2018). The perplexity of language models rises
+when given out-of-domain text (Oren et al., 2019).
+Many types of bias have also been found in NLP
+systems, with models performing better on gender-
+stereotypical inputs (Rudinger et al., 2018; Etha-
+yarajh, 2020) and racial stereotypes being captured
+in embedding space (Manzini et al., 2019; Etha-
+yarajh et al., 2019a,b; Ethayarajh, 2019). Moreover,
+repeated resubmissions allow for a model’s hyper-
+parameters to be tuned to maximize performance,
+even on a private test set (Hardt, 2017).
+Note that leaderboards do not necessarily incen-
+tivize the creation of brittle and biased models;
+rather, because leaderboard utility is so parochial,
+these unintended consequences are relatively com-
+mon. Some recent work has addressed the prob-
+lem of brittleness by offering certiﬁcates of perfor-
+mance against adversarial examples (Raghunathan
+et al., 2018a,b; Jia et al., 2019). To tackle gender
+bias, the SuperGLUE leaderboard considers accu-
+racy on the WinoBias task (Wang et al., 2019; Zhao
+et al., 2018). Other work has proposed changes
+to prevent over-ﬁtting via multiple resubmissions
+(Hardt and Blum, 2015; Hardt, 2017) while some
+have argued that this issue is overblown, given
+that question-answering systems submitted to the
+SQuAD leaderboard do not over-ﬁt to the original
+test set (Miller et al., 2020). A novel approach even
+proposes using a dynamic benchmark instead of a
+static one, creating a moving target that is harder
+for models to overﬁt to (Nie et al., 2019).
+4 The Future of Leaderboards
+4.1 A Leaderboard for Every User
+Given that each practitioner has their own utility
+function, models cannot be ranked in a way that
+satisﬁes everyone. Drawing inspiration from data
+statements (Bender and Friedman, 2018; Mitchell
+et al., 2019; Gebru et al., 2018), we instead recom-
+mend that leaderboards demand transparency and
+require the reporting of metrics that are relevant to
+practitioners, such as training time, model size, in-
+ference latency, and energy efﬁciency. Dodge et al.
+(2019) have suggested that model creators submit
+these statistics of their own accord, but without
+leaderboards requiring it, there would be no explicit
+4850incentive to do so. Although NLP workshops and
+conferences could also require this, their purview
+is limited: (1) models are often submitted to leader-
+boards before conferences; (2) leaderboards make
+these statistics easily accessible in one place.
+Giving practitioners easy access to these statis-
+tics would permit them to estimate each model’s
+utility to them and then re-rank accordingly. This
+could be made even easier by offering an interface
+that allows the user to change the weighting on
+each metric and then using the chosen weights to
+dynamically re-rank the models. In effect, every
+user would have their own leaderboard. Ideally,
+users would even have the option of ﬁltering out
+models that do not meet their criteria (e.g., those
+above a certain parameter count).
+This would have beneﬁcial second-order effects
+as well. For example, reporting the costs of making
+predictions would put large institutions and poorly-
+resourced model creators on more equal footing
+(Rogers, 2019). This might motivate the creation
+of simpler methods whose ease-of-use makes up for
+weaker performance, such as weighted-average sen-
+tence embeddings (Arora et al., 2019; Ethayarajh,
+2018). Even if a poorly-resourced creator could
+not afford to train the SOTA model du jour , they
+could at least compete on the basis of efﬁciency or
+create a minimally viable system that meets some
+desired threshold (Dodge et al., 2019; Dorr, 2011).
+Reporting the performance on the worst-off group,
+in the spirit of Rawlsian fairness (Rawls, 2001;
+Hashimoto et al., 2018), would also incentivize
+creators to improve worst-case performance.
+4.2 A Leaderboard for Every Type of User
+While each practitioner may have their own utility
+function, groups of practitioners – characterized
+by a shared goal – can be modelled with a single
+function. For example, programmers working on
+low latency applications (e.g., multiplayer games)
+will place more value on latency than others. In
+contrast, researchers submitting their work to a con-
+ference may place more value on accuracy, given
+that a potential reviewer may reject a model that is
+not SOTA (Rogers, 2020). Although there is vari-
+ance within any group, this approach is tractable
+when there are many points of consensus.
+How might we go about creating a leaderboard
+for a speciﬁc type of user? As proposed in the pre-
+vious subsection, one option is to offer an interface
+that allows the user to change the utility functiondynamically. If we wanted to create a static leader-
+board for a group of users, however, we would
+need to estimate their utility function. This could
+be done explicitly or implicitly. The explicit way
+would be to ask questions that use the dollar value
+as a proxy for cardinal utility: e.g., Given a 100M
+parameter sentiment classiﬁer with 200ms latency,
+how much would you pay per 1000 API calls? One
+could also try to estimate the derivative of the util-
+ity function with questions such as: How much
+would you pay to improve the latency from 200ms
+to 100ms, holding all else constant? When there
+are multiple metrics to consider, some assumptions
+would be needed to tractably estimate the function.
+The implicit alternative to estimating this func-
+tion is to record which models practitioners actually
+use and then ﬁt a utility function that maximizes
+the utility of the observed models. This approach
+is rooted in revealed preference theory (Samuelson,
+1948) – we assume that what practitioners use re-
+veals their latent preferences. Exploiting revealed
+preferences may be difﬁcult in practice, however,
+given that usage statistics for models are not often
+made public and the decision to use a model might
+not be made with complete information.
+5 Conclusion
+In this work, we offered several criticisms of leader-
+board design in NLP. While it has helped create
+more accurate models, we argued that this has been
+at the expense of fairness, efﬁciency, and robust-
+ness, among other desiderata. We were not the ﬁrst
+to criticize NLP leaderboards (Rogers, 2019; Crane,
+2018; Linzen, 2020), but we were the ﬁrst to do
+so under a framework of utility , which we used to
+study the divergence between what is incentivized
+by leaderboards and what is valued by practitioners.
+Given the diversity of NLP practitioners, there is
+no one-size-ﬁts-all solution; rather, leaderboards
+should demand transparency, requiring the report-
+ing of statistics that may be of practical concern.
+Equipped with these statistics, each user could then
+estimate the utility that each model provides to
+them and then re-rank accordingly, effectively cre-
+ating a custom leaderboard for everyone.
+Acknowledgments
+Many thanks to Eugenia Rho, Dallas Card, Robin
+Jia, Urvashi Khandelwal, Nelson Liu, and Sidd
+Karamcheti for feedback. KE is supported by an
+NSERC PGS-D.
+4851References
+Eneko Agirre, Carmen Banea, Claire Cardie, Daniel M
+Cer, Mona T Diab, Aitor Gonzalez-Agirre, Weiwei
+Guo, Inigo Lopez-Gazpio, Montse Maritxalar, Rada
+Mihalcea, et al. 2015. Semeval-2015 task 2: Seman-
+tic textual similarity, English, Spanish and pilot on
+interpretability. In Proceedings SemEval@ NAACL-
+HLT, pages 252–263.
+Eneko Agirre, Carmen Banea, Claire Cardie, Daniel M
+Cer, Mona T Diab, Aitor Gonzalez-Agirre, Weiwei
+Guo, Rada Mihalcea, German Rigau, and Janyce
+Wiebe. 2014. Semeval-2014 task 10: Multilin-
+gual semantic textual similarity. In Proceedings Se-
+mEval@ COLING , pages 81–91.
+Eneko Agirre, Daniel Cer, Mona Diab, Aitor Gonzalez-
+Agirre, and Weiwei Guo. 2013. Sem 2013 shared
+task: Semantic textual similarity, including a pilot
+on typed-similarity. In SEM 2013: The Second Joint
+Conference on Lexical and Computational Seman-
+tics. Association for Computational Linguistics.
+Sanjeev Arora, Yingyu Liang, and Tengyu Ma. 2019.
+A simple but tough-to-beat baseline for sentence em-
+beddings. In 5th International Conference on Learn-
+ing Representations, ICLR 2017 .
+Solon Barocas, Moritz Hardt, and Arvind Narayanan.
+2017. Fairness in machine learning. NIPS Tutorial .
+Emily M Bender and Batya Friedman. 2018. Data
+statements for natural language processing: Toward
+mitigating system bias and enabling better science.
+Transactions of the Association for Computational
+Linguistics , 6:587–604.
+Su Lin Blodgett, Solon Barocas, Hal Daum ´e III, and
+Hanna Wallach. 2020. Language (technology) is
+power: A critical survey of ”bias” in nlp.
+Shikha Bordia and Samuel Bowman. 2019. Identify-
+ing and reducing gender bias in word-level language
+models. In Proceedings of the 2019 Conference of
+the North American Chapter of the Association for
+Computational Linguistics: Student Research Work-
+shop , pages 7–15.
+Samuel Bowman, Gabor Angeli, Christopher Potts, and
+Christopher D Manning. 2015. A large annotated
+corpus for learning natural language inference. In
+Proceedings of the 2015 Conference on Empirical
+Methods in Natural Language Processing , pages
+632–642.
+Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie
+Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind
+Neelakantan, Pranav Shyam, Girish Sastry, Amanda
+Askell, Sandhini Agarwal, Ariel Herbert-V oss,
+Gretchen Krueger, Tom Henighan, Rewon Child,
+Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu,
+Clemens Winter, Christopher Hesse, Mark Chen,
+Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin
+Chess, Jack Clark, Christopher Berner, Sam Mc-
+Candlish, Alec Radford, Ilya Sutskever, and DarioAmodei. 2020. Language models are few-shot learn-
+ers.
+Kevin Clark, Minh-Thang Luong, Quoc V Le, and
+Christopher D Manning. 2020. Electra: Pre-training
+text encoders as discriminators rather than genera-
+tors. arXiv preprint arXiv:2003.10555 .
+Matt Crane. 2018. Questionable Answers in Question
+Answering Research: Reproducibility and Variabil-
+ity of Published Results. Transactions of the Associ-
+ation for Computational Linguistics , 6:241–252.
+Jacob Devlin, Ming-Wei Chang, Kenton Lee, and
+Kristina Toutanova. 2019. Bert: Pre-training of
+deep bidirectional transformers for language under-
+standing. In Proceedings of the 2019 Conference of
+the North American Chapter of the Association for
+Computational Linguistics: Human Language Tech-
+nologies, Volume 1 (Long and Short Papers) , pages
+4171–4186.
+Jesse Dodge, Suchin Gururangan, Dallas Card, Roy
+Schwartz, and Noah A Smith. 2019. Show your
+work: Improved reporting of experimental results.
+InProceedings of the 2019 Conference on Empirical
+Methods in Natural Language Processing and the
+9th International Joint Conference on Natural Lan-
+guage Processing (EMNLP-IJCNLP) , pages 2185–
+2194.
+Bonnie Dorr. 2011. Part 5: Machine Translation Eval-
+uation . Springer Science & Business Media.
+Kawin Ethayarajh. 2018. Unsupervised random walk
+sentence embeddings: A strong but simple baseline.
+InProceedings of The Third Workshop on Represen-
+tation Learning for NLP , pages 91–100.
+Kawin Ethayarajh. 2019. Rotate king to get queen:
+Word relationships as orthogonal transformations in
+embedding space. In Proceedings of the 2019 Con-
+ference on Empirical Methods in Natural Language
+Processing and the 9th International Joint Confer-
+ence on Natural Language Processing (EMNLP-
+IJCNLP) , pages 3494–3499.
+Kawin Ethayarajh. 2020. Is your classiﬁer actually
+biased? measuring fairness under uncertainty with
+bernstein bounds. arXiv preprint arXiv:2004.12332 .
+Kawin Ethayarajh, David Duvenaud, and Graeme Hirst.
+2019a. Towards understanding linear word analo-
+gies. In Proceedings of the 57th Annual Meeting
+of the Association for Computational Linguistics ,
+pages 3253–3262, Florence, Italy. Association for
+Computational Linguistics.
+Kawin Ethayarajh, David Duvenaud, and Graeme Hirst.
+2019b. Understanding undesirable word embedding
+associations. In Proceedings of the 57th Annual
+Meeting of the Association for Computational Lin-
+guistics , pages 1696–1705.
+4852Timnit Gebru, Jamie Morgenstern, Briana Vecchione,
+Jennifer Wortman Vaughan, Hanna Wallach, Hal
+Daume ´e III, and Kate Crawford. 2018. Datasheets
+for datasets. arXiv preprint arXiv:1803.09010 .
+Moritz Hardt. 2017. Climbing a shaky ladder:
+Better adaptive risk estimation. arXiv preprint
+arXiv:1706.02733 .
+Moritz Hardt and Avrim Blum. 2015. The ladder: a
+reliable leaderboard for machine learning competi-
+tions. In Proceedings of the 32nd International Con-
+ference on International Conference on Machine
+Learning-Volume 37 , pages 1006–1014.
+Moritz Hardt, Eric Price, and Nati Srebro. 2016. Equal-
+ity of opportunity in supervised learning. In Ad-
+vances in neural information processing systems ,
+pages 3315–3323.
+Tatsunori Hashimoto, Megha Srivastava, Hongseok
+Namkoong, and Percy Liang. 2018. Fairness with-
+out demographics in repeated loss minimization.
+InInternational Conference on Machine Learning ,
+pages 1929–1938.
+Lu Hou, Lifeng Shang, Xin Jiang, and Qun Liu. 2020.
+Dynabert: Dynamic bert with adaptive width and
+depth. arXiv preprint arXiv:2004.04037 .
+Robin Jia and Percy Liang. 2017. Adversarial exam-
+ples for evaluating reading comprehension systems.
+InProceedings of the 2017 Conference on Empiri-
+cal Methods in Natural Language Processing , pages
+2021–2031.
+Robin Jia, Aditi Raghunathan, Kerem G ¨oksel, and
+Percy Liang. 2019. Certiﬁed robustness to adver-
+sarial word substitutions. In Proceedings of the
+2019 Conference on Empirical Methods in Natu-
+ral Language Processing and the 9th International
+Joint Conference on Natural Language Processing
+(EMNLP-IJCNLP) , pages 4120–4133.
+Tal Linzen. 2020. How can we accelerate progress to-
+wards human-like linguistic generalization? In Pro-
+ceedings of the 58th Annual Meeting of the Asso-
+ciation for Computational Linguistics , pages 5210–
+5217, Online. Association for Computational Lin-
+guistics.
+N Gregory Mankiw. 2020. Principles of economics .
+Cengage Learning.
+Thomas Manzini, Lim Yao Chong, Alan W Black, and
+Yulia Tsvetkov. 2019. Black is to criminal as cau-
+casian is to police: Detecting and removing multi-
+class bias in word embeddings. In Proceedings of
+the 2019 Conference of the North American Chap-
+ter of the Association for Computational Linguistics:
+Human Language Technologies, Volume 1 (Long
+and Short Papers) , pages 615–621.
+Yihuan Mao, Yujing Wang, Chufan Wu, Chen Zhang,
+Yang Wang, Yaming Yang, Quanlu Zhang, Yunhai
+Tong, and Jing Bai. 2020. Ladabert: Lightweightadaptation of bert through hybrid model compres-
+sion. arXiv preprint arXiv:2004.04124 .
+Bryan McCann, Nitish Shirish Keskar, Caiming Xiong,
+and Richard Socher. 2018. The natural language de-
+cathlon: Multitask learning as question answering.
+arXiv preprint arXiv:1806.08730 .
+John Miller, Karl Krauth, Benjamin Recht, and Ludwig
+Schmidt. 2020. The effect of natural distribution
+shift on question answering models. arXiv preprint
+arXiv:2004.14444 .
+Margaret Mitchell, Simone Wu, Andrew Zaldivar,
+Parker Barnes, Lucy Vasserman, Ben Hutchinson,
+Elena Spitzer, Inioluwa Deborah Raji, and Timnit
+Gebru. 2019. Model cards for model reporting. In
+Proceedings of the conference on fairness, account-
+ability, and transparency , pages 220–229.
+Moin Nadeem, Anna Bethke, and Siva Reddy.
+2020. Stereoset: Measuring stereotypical bias
+in pretrained language models. arXiv preprint
+arXiv:2004.09456 .
+Yixin Nie, Adina Williams, Emily Dinan, Mohit
+Bansal, Jason Weston, and Douwe Kiela. 2019. Ad-
+versarial nli: A new benchmark for natural language
+understanding. arXiv preprint arXiv:1910.14599 .
+Yonatan Oren, Shiori Sagawa, Tatsunori Hashimoto,
+and Percy Liang. 2019. Distributionally robust lan-
+guage modeling. In Proceedings of the 2019 Con-
+ference on Empirical Methods in Natural Language
+Processing and the 9th International Joint Confer-
+ence on Natural Language Processing (EMNLP-
+IJCNLP) , pages 4218–4228.
+Aditi Raghunathan, Jacob Steinhardt, and Percy Liang.
+2018a. Certiﬁed defenses against adversarial exam-
+ples. arXiv preprint arXiv:1801.09344 .
+Aditi Raghunathan, Jacob Steinhardt, and Percy S
+Liang. 2018b. Semideﬁnite relaxations for certify-
+ing robustness to adversarial examples. In Advances
+in Neural Information Processing Systems , pages
+10877–10887.
+Pranav Rajpurkar, Robin Jia, and Percy Liang. 2018.
+Know what you don’t know: Unanswerable ques-
+tions for squad. In Proceedings of the 56th Annual
+Meeting of the Association for Computational Lin-
+guistics (Volume 2: Short Papers) , pages 784–789.
+Pranav Rajpurkar, Jian Zhang, Konstantin Lopyrev, and
+Percy Liang. 2016. Squad: 100,000+ questions for
+machine comprehension of text. In Proceedings of
+the 2016 Conference on Empirical Methods in Natu-
+ral Language Processing , pages 2383–2392.
+John Rawls. 2001. Justice as fairness: A restatement .
+Harvard University Press.
+Anna Rogers. 2019. How the transformers broke NLP
+leaderboards. https://hackingsemantics.
+xyz/2019/leaderboards/ . Accessed: 2020-05-
+20.
+4853Anna Rogers. 2020. Peer review in NLP: reject-if-
+not-SOTA. https://hackingsemantics.xyz/
+2020/reviewing-models/ . Accessed: 2020-05-
+20.
+Rachel Rudinger, Jason Naradowsky, Brian Leonard,
+and Benjamin Van Durme. 2018. Gender bias in
+coreference resolution. In Proceedings of the 2018
+Conference of the North American Chapter of the
+Association for Computational Linguistics: Human
+Language Technologies, Volume 2 (Short Papers) ,
+pages 8–14.
+Paul A Samuelson. 1948. Consumption theory in terms
+of revealed preference. Economica , 15(60):243–
+253.
+Victor Sanh, Lysandre Debut, Julien Chaumond, and
+Thomas Wolf. 2019. Distilbert, a distilled version
+of bert: smaller, faster, cheaper and lighter. arXiv
+preprint arXiv:1910.01108 .
+Roy Schwartz, Jesse Dodge, Noah A. Smith, and Oren
+Etzioni. 2019. Green AI. CoRR , abs/1907.10597.
+Emma Strubell, Ananya Ganesh, and Andrew McCal-
+lum. 2019. Energy and policy considerations for
+deep learning in nlp. In Proceedings of the 57th An-
+nual Meeting of the Association for Computational
+Linguistics , pages 3645–3650.
+Beth Sundheim. 1995. Overview of results of the
+MUC-6 evaluation. In MUC-6 , pages 13–31,
+Columbia, MD.
+Alex Wang, Yada Pruksachatkun, Nikita Nangia,
+Amanpreet Singh, Julian Michael, Felix Hill, Omer
+Levy, and Samuel Bowman. 2019. Superglue: A
+stickier benchmark for general-purpose language un-
+derstanding systems. In Advances in Neural Infor-
+mation Processing Systems , pages 3261–3275.
+Alex Wang, Amanpreet Singh, Julian Michael, Felix
+Hill, Omer Levy, and Samuel R Bowman. 2018.
+Glue: A multi-task benchmark and analysis platform
+for natural language understanding. EMNLP 2018 ,
+page 353.
+Ali Hadi Zadeh and Andreas Moshovos. 2020. Gobo:
+Quantizing attention-based nlp models for low la-
+tency and energy efﬁcient inference. arXiv preprint
+arXiv:2005.03842 .
+Wei Emma Zhang, Quan Z Sheng, Ahoud Alhazmi,
+and Chenliang Li. 2020. Adversarial attacks on
+deep-learning models in natural language process-
+ing: A survey. ACM Transactions on Intelligent Sys-
+tems and Technology (TIST) , 11(3):1–41.
+Jieyu Zhao, Tianlu Wang, Mark Yatskar, Vicente Or-
+donez, and Kai-Wei Chang. 2018. Gender bias in
+coreference resolution: Evaluation and debiasing
+methods. In Proceedings of the 2018 Conference of
+the North American Chapter of the Association for
+Computational Linguistics: Human Language Tech-
+nologies, Volume 2 (Short Papers) , pages 15–20.

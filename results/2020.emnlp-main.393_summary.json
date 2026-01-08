@@ -1,0 +1,22 @@
+{
+  "doc_id": "2020.emnlp-main.393",
+  "metadata": {
+    "filename": "2020.emnlp-main.393.pdf",
+    "arxiv_id": null,
+    "title": "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing , pages 4846\u20134853,",
+    "abstract": "Benchmarks such as GLUE have helped drive\nadvances in NLP by incentivizing the creation\nof more accurate models. While this leader-\nboard paradigm has been remarkably success-\nful, a historical focus on performance-based\nevaluation has been at the expense of other\nqualities that the NLP community values in\nmodels, such as compactness, fairness, and en-\nergy ef\ufb01ciency. In this opinion paper, we study\nthe divergence between what is incentivized\nby leaderboards and what is useful in prac-\ntice through the lens of microeconomic the-\nory. We frame both the leaderboard and NLP\npractitioners as consumers and the bene\ufb01t they\nget from a model as its utility to them. With\nthis framing, we formalize how leaderboards\n\u2013 in their current form \u2013 can be poor proxies\nfor the NLP community at large. For exam-\nple, a highly inef\ufb01cient model would provide\nless utility to practitioners but not to a leader-\nboard, since it is a cost that only the former\nmust bear. To allow practitioners to better es-\ntimate",
+    "processed_date": "2026-01-08T10:01:40.676074",
+    "word_count": 5398,
+    "char_count": 35239
+  },
+  "original_length": 5398,
+  "summary_length": 39,
+  "num_chunks": 7,
+  "compression_ratio": 0.007224898110411263,
+  "faithfulness_score": 0.967741935483871,
+  "processing_time": 6.087602,
+  "summary": "In economics, the utility of a good denotes the bene- \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0 \u00a0\ufb01t that a consumer receives from it. A leaderboard does not incentivize the creation of lightweight models that are 85% accurate. This is the case with the SNLI leaderboard.",
+  "method": "hierarchical",
+  "model": "facebook/bart-large-cnn",
+  "timestamp": "2026-01-08T11:34:51.241640"
+}
