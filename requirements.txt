@@ -1,0 +1,10 @@
+transformers
+torch
+sentencepiece
+PyPDF2
+spacy
+nltk
+rouge-score
+bert-score
+streamlit
+langchain
