@@ -5,7 +5,9 @@ env/
 
 # Data
 data/raw/*.pdf
+data/raw/*.txt
 data/processed/*.json
+data/processed/*.txt
 
 # Python
 __pycache__/
