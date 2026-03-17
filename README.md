@@ -2,6 +2,8 @@
 
 This project implements a long-document text summarization system designed for domains such as legal, medical, and research documents. The system handles documents exceeding standard transformer context limits by applying chunking strategies and hierarchical summarization to generate accurate and faithful summaries.
 
+It now also includes a lightweight retrieval-augmented generation (RAG) mode that first retrieves the most relevant chunks for a query, then summarizes only the retrieved context to reduce context dilution.
+
 ## Problem Statement
 Transformer-based summarization models struggle with long documents due to context length limitations, often resulting in information loss or hallucinations. This project addresses these challenges using chunk-based and hierarchical summarization techniques.
 
@@ -73,8 +75,14 @@ summarizer = DocumentSummarizer(
     min_length=50
 )
 
-# Generate summary
-result = summarizer.hierarchical_summarize(chunks)
+# Generate summary (RAG mode)
+result = summarizer.summarize_long_document(
+    text=text,
+    chunks=chunks,
+    method="rag",
+    rag_query="main contributions and key findings",
+    retrieval_top_k=5,
+)
 print(result['final_summary'])
 ```
 
@@ -91,6 +99,12 @@ python notebooks/example.py
 Run the test suite to verify installation:
 
 ```bash
+pytest -q
+```
+
+Optional end-to-end demo script:
+
+```bash
 python test_pipeline.py
 ```
 
@@ -100,6 +114,12 @@ python test_pipeline.py
 3. Generate summaries for individual chunks
 4. Combine chunk summaries into a final meta-summary
 5. Evaluate summary quality using both automatic and qualitative metrics
+
+### RAG Flow
+1. Index chunked document text with lexical scoring
+2. Retrieve top-K chunks for a user query
+3. Run hierarchical summarization only on retrieved chunks
+4. Return summary + retrieval metadata (chunk ids and scores)
 
 ## Tech Stack
 - Python 3.10+
@@ -151,7 +171,9 @@ Adjust parameters in the Streamlit sidebar or programmatically:
 - **Overlap**: 0-512 tokens (default: 128)
 - **Chunking Method**: sentences, paragraphs, tokens
 - **Summary Length**: min=20-100, max=50-500 words
-- **Summarization Method**: hierarchical, concatenate
+- **Summarization Method**: hierarchical, concatenate, rag
+- **RAG Query**: retrieval objective (e.g., "key findings and conclusions")
+- **RAG Top-K**: number of retrieved chunks (default: 5)
 
 ## Future Improvements
 - Citation-aware summarization

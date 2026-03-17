@@ -82,9 +82,11 @@ class DatasetSummarizer:
         start_time = datetime.now()
         
         if method == "hierarchical":
-            summary = self.summarizer.hierarchical_summarize(chunks)
+            summary_result = self.summarizer.hierarchical_summarize(chunks)
         else:
-            summary = self.summarizer.concatenate_and_summarize(chunks)
+            summary_result = self.summarizer.concatenate_and_summarize(chunks)
+
+        summary = summary_result['final_summary']
         
         end_time = datetime.now()
         duration = (end_time - start_time).total_seconds()

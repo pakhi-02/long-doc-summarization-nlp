@@ -9,6 +9,12 @@ data/raw/*.txt
 data/processed/*.json
 data/processed/*.txt
 
+# File types
+*.png
+*.txt
+*.json
+*.pdf
+
 # Python
 __pycache__/
 *.pyc

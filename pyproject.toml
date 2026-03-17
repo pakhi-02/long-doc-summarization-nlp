@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "long-doc-summarization-nlp"
+version = "0.1.0"
+description = "Long document summarization with chunking and hierarchical aggregation"
+requires-python = ">=3.10"
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311"]
+include = '\.pyi?$'
+exclude = '''
+/(\
+    \.git
+  | \.venv
+  | venv
+  | __pycache__
+  | data/processed
+  | data/raw
+  | notebooks
+)/
+'''
+
+[tool.mypy]
+python_version = "3.10"
+files = ["src", "tests"]
+ignore_missing_imports = true
+warn_unused_ignores = true
+check_untyped_defs = true
+exclude = "(notebooks|data/processed|data/raw|venv|\\.venv)"

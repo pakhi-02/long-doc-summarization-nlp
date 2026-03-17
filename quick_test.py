@@ -66,7 +66,8 @@ def quick_test(num_docs: int = 2):
         
         # Summarize
         print("2. Summarizing (hierarchical)...")
-        summary = summarizer.hierarchical_summarize(chunks)
+        summary_result = summarizer.hierarchical_summarize(chunks)
+        summary = summary_result['final_summary']
         end_time = datetime.now()
         duration = (end_time - start_time).total_seconds()
         
@@ -81,7 +82,7 @@ def quick_test(num_docs: int = 2):
         print(f"   ✓ Faithfulness: {faithfulness:.1%}")
         
         # Display summary
-        print(f"\n📝 Summary ({len(summary.split())} words):")
+        print(f"\n Summary ({len(summary.split())} words):")
         print("   " + "-"*56)
         print(f"   {summary}")
         print("   " + "-"*56)
@@ -112,7 +113,7 @@ def quick_test(num_docs: int = 2):
     print(f"Average faithfulness: {avg_faithfulness:.1%}")
     print(f"Total time: {total_time:.1f}s")
     
-    print("\n✅ Quick test complete!")
+    print("\n Quick test complete!")
     print("\nTo run full batch summarization:")
     print("  python summarize_dataset.py")
     

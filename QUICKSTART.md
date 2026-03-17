@@ -12,7 +12,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 # 2. Test the installation
-python test_pipeline.py
+pytest -q
 
 # 3. Run the web app
 streamlit run app.py
@@ -58,9 +58,31 @@ print(result['final_summary'])
 
 - **Hierarchical** (Recommended): Best for very long documents (>5000 words)
 - **Concatenate**: Faster but less coherent for very long docs
+- **RAG**: Best when you care about specific aspects (e.g., methods, results, limitations)
 - **Sentences**: Best for most cases, preserves meaning
 - **Paragraphs**: Good for well-structured documents
 - **Tokens**: Simple word-based splitting
+
+## 🔎 RAG Example
+
+```python
+from src.chunker import split_long_document
+from src.summarizer import DocumentSummarizer
+
+chunks, _ = split_long_document(text)
+summarizer = DocumentSummarizer()
+
+result = summarizer.summarize_long_document(
+	text=text,
+	chunks=chunks,
+	method="rag",
+	rag_query="main contributions and experimental results",
+	retrieval_top_k=5,
+)
+
+print(result["final_summary"])
+print(result["retrieved_chunk_ids"])
+```
 
 ## 📊 Understanding Metrics
 
@@ -74,6 +96,12 @@ print(result['final_summary'])
 1. **Out of Memory**: Reduce chunk_size or use smaller model (t5-small)
 2. **Slow Processing**: Use GPU or reduce max_length
 3. **Poor Quality**: Increase chunk_size or try different model
+
+## 🧪 Optional Full Pipeline Check
+
+```bash
+python test_pipeline.py
+```
 
 ## 🚀 Next Steps
 

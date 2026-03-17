@@ -90,9 +90,10 @@ class ModelComparison:
                             # Summarize
                             start = datetime.now()
                             if method == "hierarchical":
-                                summary = summarizer.hierarchical_summarize(chunks)
+                                summary_result = summarizer.hierarchical_summarize(chunks)
                             else:
-                                summary = summarizer.concatenate_and_summarize(chunks)
+                                summary_result = summarizer.concatenate_and_summarize(chunks)
+                            summary = summary_result['final_summary']
                             duration = (datetime.now() - start).total_seconds()
                             
                             # Metrics
