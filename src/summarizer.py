@@ -214,9 +214,10 @@ class DocumentSummarizer:
 
         # Step 3: Generate final meta-summary
         print("\nStep 3: Generating final meta-summary...")
-        final_length = final_max_length or (self.max_length * 2)
+        final_length = final_max_length or (self.max_length * 3)
+        final_min_length = max(self.min_length, min(final_length - 20, self.min_length * 2))
         final_summary = self.summarize_chunk(
-            combined_summary, max_length=final_length, min_length=self.min_length
+            combined_summary, max_length=final_length, min_length=final_min_length
         )
 
         print("✓ Hierarchical summarization complete!")
@@ -333,7 +334,10 @@ class DocumentSummarizer:
             Dict containing summaries and metadata
         """
         if method == "hierarchical":
-            summary_result = self.hierarchical_summarize(chunks)
+            summary_result = self.hierarchical_summarize(
+                chunks,
+                final_max_length=self.max_length * 3,
+            )
             final_summary = summary_result["final_summary"]
             summary_length = max(1, len(final_summary.split()))
             return {
@@ -365,7 +369,7 @@ class DocumentSummarizer:
                 chunks,
                 query=rag_query,
                 retrieval_top_k=retrieval_top_k,
-                final_max_length=self.max_length * 2,
+                final_max_length=self.max_length * 3,
             )
             final_summary = summary_result["final_summary"]
             summary_length = max(1, len(final_summary.split()))

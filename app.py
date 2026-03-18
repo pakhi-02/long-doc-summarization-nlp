@@ -48,8 +48,8 @@ chunk_method = st.sidebar.selectbox("Chunking Method", ["sentences", "paragraphs
 
 # Summarization parameters
 st.sidebar.subheader("Summarization Settings")
-max_summary_length = st.sidebar.slider("Max Summary Length", 50, 500, 150, 25)
-min_summary_length = st.sidebar.slider("Min Summary Length", 20, 100, 50, 10)
+max_summary_length = st.sidebar.slider("Max Summary Length", 50, 800, 320, 20)
+min_summary_length = st.sidebar.slider("Min Summary Length", 20, 300, 120, 10)
 summarization_method = st.sidebar.selectbox("Method", ["hierarchical", "concatenate", "rag"])
 
 rag_query_presets = {

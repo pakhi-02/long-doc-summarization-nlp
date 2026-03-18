@@ -170,10 +170,12 @@ Adjust parameters in the Streamlit sidebar or programmatically:
 - **Chunk Size**: 256-2048 tokens (default: 1024)
 - **Overlap**: 0-512 tokens (default: 128)
 - **Chunking Method**: sentences, paragraphs, tokens
-- **Summary Length**: min=20-100, max=50-500 words
+- **Summary Length**: min=20-300, max=50-800 words
 - **Summarization Method**: hierarchical, concatenate, rag
 - **RAG Query**: retrieval objective (e.g., "key findings and conclusions")
 - **RAG Top-K**: number of retrieved chunks (default: 5)
+
+For more in-depth summaries, increase max/min summary length (for example, min=120 and max=320+) and prefer `hierarchical` or `rag` with a focused query.
 
 ## Future Improvements
 - Citation-aware summarization
